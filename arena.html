@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gor-Jess Grazing | Luxury Grazing Tables & Charcuterie</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4BC;
+            --black: #1A1A1A;
+            --cream: #FAF8F5;
+        }
+        
+        * {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Custom Colors */
+        .text-gold { color: var(--gold); }
+        .text-gold-light { color: var(--gold-light); }
+        .bg-gold { background-color: var(--gold); }
+        .bg-gold-light { background-color: var(--gold-light); }
+        .bg-cream { background-color: var(--cream); }
+        
+        /* Gold Border */
+        .border-gold { border-color: var(--gold); }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, #F8E4A8 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Navigation */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: #140d09;
+        }
+        
+        /* Hero Animation */
+        .hero-content {
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        .glow-button:hover {
+            animation: pulse-glow 1.5s ease-in-out infinite;
+        }
+        
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Gallery hover effects */
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(26, 26, 26, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        /* Parallax sections */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Pricing cards */
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), #F8E4A8, var(--gold));
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25);
+        }
+        
+        /* FAQ accordion */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--gold);
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-item.active .faq-content {
+            max-height: 300px;
+        }
+        
+        /* Contact form */
+        .input-glow:focus {
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+        }
+        
+        /* Section dividers */
+        .divider-gold {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Gallery modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        /* Gold accent line animation */
+        .accent-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            position: relative;
+        }
+        
+        .accent-line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold), #B8942E);
+            border-radius: 4px;
+        }
+        
+        /* Section backgrounds */
+        .bg-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(45, 35, 30, 0.55) 100%),
+                        url('images/hero.jpg') center/cover;
+        }
+        
+        .bg-about {
+            background: var(--cream);
+        }
+        
+        .bg-dark {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D2820 100%);
+        }
+        
+        /* Image placeholders with elegant gradients */
+        .img-placeholder {
+            background: linear-gradient(135deg, #2D2820 0%, #1A1A1A 50%, #3D3528 100%);
+        }
+    </style>
+</head>
+<body class="bg-cream text-gray-800">
+    <!-- Navigation -->
+    <nav id="navbar" class="nav-blur fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <img src="images/logo-black.png" alt="Gor-Jess Grazing Logo" class="h-20 w-auto">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#about" class="text-white/80 hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest">About</a>
+                    <a href="#gallery" class="text-white/80 hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest">Gallery</a>
+                    <a href="#pricing" class="text-white/80 hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest">Pricing</a>
+                    <a href="#faq" class="text-white/80 hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest">FAQ</a>
+                    <a href="#contact" class="text-white/80 hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest">Contact</a>
+                    <a href="#order" class="bg-gold text-black px-6 py-2.5 rounded-full hover:bg-white transition-all duration-300 glow-button font-medium text-sm uppercase tracking-widest">Order Now</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-white p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-black/95 backdrop-blur-xl lg:hidden">
+            <div class="p-6">
+                <button id="closeMobileMenu" class="absolute top-6 right-6 text-white/60 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <div class="mt-12 space-y-6">
+                    <a href="#about" class="block text-white/80 hover:text-gold transition-colors duration-300 font-display text-lg">About</a>
+                    <a href="#gallery" class="block text-white/80 hover:text-gold transition-colors duration-300 font-display text-lg">Gallery</a>
+                    <a href="#pricing" class="block text-white/80 hover:text-gold transition-colors duration-300 font-display text-lg">Pricing</a>
+                    <a href="#faq" class="block text-white/80 hover:text-gold transition-colors duration-300 font-display text-lg">FAQ</a>
+                    <a href="#contact" class="block text-white/80 hover:text-gold transition-colors duration-300 font-display text-lg">Contact</a>
+                    <a href="#order" class="inline-block w-full text-center bg-gold text-black px-6 py-3 rounded-full mt-4 font-medium">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-hero">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 left-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="hero-content relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div class="mb-6">
+                <span class="text-gold text-sm uppercase tracking-[0.3em]">Southern California Premier</span>
+            </div>
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                Exquisite <span class="text-gradient">Grazing</span><br>
+                <span class="text-3xl md:text-5xl lg:text-6xl">Experiences</span>
+            </h1>
+            <p class="text-white/70 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Handcrafted grazing tables, charcuterie boards & cones crafted with passion, 
+                designed to elevate your events into unforgettable culinary journeys.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#order" class="bg-gold text-black px-8 py-4 rounded-full hover:bg-white transition-all duration-300 glow-button font-medium text-sm uppercase tracking-widest">
+                    <i class="fas fa-shopping-bag mr-2"></i>Order Now
+                </a>
+                <a href="#gallery" class="border border-gold text-gold px-8 py-4 rounded-full hover:bg-gold hover:text-black transition-all duration-300 font-medium text-sm uppercase tracking-widest">
+                    View Gallery
+                </a>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute -left-20 top-1/3 float-animation hidden lg:block">
+                <div class="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center">
+                    <i class="fas fa-wine-glass text-gold/40 text-2xl"></i>
+                </div>
+            </div>
+            <div class="absolute -right-16 bottom-1/3 float-animation hidden lg:block" style="animation-delay: 1s;">
+                <div class="w-16 h-16 rounded-full bg-amber-600/10 flex items-center justify-center">
+                    <i class="fas fa-cheese text-amber-500/40 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <div class="w-8 h-12 rounded-full border-2 border-gold/30 flex items-start justify-center p-2">
+                <div class="w-1 h-3 bg-gold rounded-full animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <div class="absolute -inset-4 bg-gradient-to-br from-gold/20 to-transparent rounded-3xl blur-xl"></div>
+                    <div class="relative grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img src="images/cheese.png" alt="Cheese board" class="rounded-2xl shadow-2xl w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500">
+                            <img src="images/board5.png" alt="Grazing table" class="rounded-2xl shadow-2xl w-full h-40 object-cover transform hover:scale-105 transition-transform duration-500" style="transform: translateY(20px);">
+                        </div>
+                        <div class="space-y-4 pt-8">
+                            <img src="images/classic-board.png" alt="Classic charcuterie board" class="rounded-2xl shadow-2xl w-full h-40 object-cover transform hover:scale-105 transition-transform duration-500">
+                            <img src="images/grazing-cone.png" alt="Grazing cones" class="rounded-2xl shadow-2xl w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" style="transform: translateY(-20px);">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <div class="mb-4">
+                        <span class="text-gold text-sm uppercase tracking-[0.2em]">Our Story</span>
+                    </div>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        Crafting <span class="text-gradient">Artisan</span> Grazing Experiences
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Welcome to Gor-Jess Grazing, where culinary artistry meets elegant presentation. 
+                        Founded with a passion for creating stunning grazing experiences, we specialize in 
+                        designing bespoke charcuterie boards, grazing tables, and innovative grazing cones 
+                        that transform any event into a feast for the senses.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Based in the heart of Los Angeles, we source the finest artisanal cheeses, 
+                        premium cured meats, fresh seasonal fruits, and gourmet accompaniments to create 
+                        presentations that are as visually stunning as they are delicious.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8" id="statsSection">
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold text-gold"><span class="counter" data-target="500">0</span>+</div>
+                            <div class="text-gray-500 text-sm">Events Catered</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold text-gold"><span class="counter" data-target="50">0</span>+</div>
+                            <div class="text-gray-500 text-sm">5-Star Reviews</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold text-gold"><span class="counter" data-target="100">0</span>%</div>
+                            <div class="text-gray-500 text-sm">Satisfaction</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-flex items-center text-gold hover:text-amber-600 transition-colors duration-300 font-medium">
+                        Learn More About Us
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-600/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold text-sm uppercase tracking-[0.2em]">Our Gallery</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mt-4">
+                    Stunning <span class="text-gradient">Creations</span>
+                </h2>
+                <div class="accent-line mx-auto mt-6"></div>
+                <p class="text-white/60 max-w-2xl mx-auto mt-6 font-light">
+                    Explore our gallery of handcrafted grazing tables, charcuterie boards, and cones 
+                    designed for every occasion.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 reveal">
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(0)">
+                    <img src="images/board.png" alt="Artisan charcuterie board" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Artisan Board</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(1)">
+                    <img src="images/wedding-elegance.png" alt="Wedding grazing table" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Wedding Elegance</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(2)">
+                    <img src="images/cones.png" alt="Grazing cones" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Grazing Cones</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(3)">
+                    <img src="images/board2.jpeg" alt="Charcuterie board" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Classic Board</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(4)">
+                    <img src="images/sweet.png" alt="Dessert grazing" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Sweet Treats</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(5)">
+                    <img src="images/corporate.png" alt="Corporate event spread" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Corporate Events</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(6)">
+                    <img src="images/board3.jpeg" alt="Grazing spread" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Grand Spread</span>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openModal(7)">
+                    <img src="images/board4.png" alt="Premium board" class="w-full h-64 object-cover">
+                    <div class="gallery-overlay flex items-end p-4">
+                        <span class="text-white font-display text-lg">Premium Selection</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 reveal">
+                <a href="#" class="inline-flex items-center border border-gold text-gold px-8 py-3 rounded-full hover:bg-gold hover:text-black transition-all duration-300 font-medium">
+                    <i class="fab fa-instagram mr-2"></i> Follow Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <div class="absolute inset-0 bg-black/90" onclick="closeModal()"></div>
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white/60 hover:text-white z-10">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+        <button onclick="prevImage()" class="absolute left-4 text-white/60 hover:text-white z-10">
+            <i class="fas fa-chevron-left text-3xl"></i>
+        </button>
+        <button onclick="nextImage()" class="absolute right-4 text-white/60 hover:text-white z-10">
+            <i class="fas fa-chevron-right text-3xl"></i>
+        </button>
+        <img id="modalImage" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded-lg">
+        <p id="modalCaption" class="text-white text-center mt-4 font-display text-xl"></p>
+    </div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold text-sm uppercase tracking-[0.2em]">Our Packages</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-4">
+                    Elegant <span class="text-gradient">Pricing</span> Options
+                </h2>
+                <div class="accent-line mx-auto mt-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6 font-light">
+                    Choose from our carefully curated grazing packages, each designed to impress 
+                    your guests with premium ingredients and stunning presentation.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Starter Package -->
+                <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl reveal">
+                    <div class="text-center mb-6">
+                        <span class="text-gold text-sm uppercase tracking-widest">Perfect for Intimate Gatherings</span>
+                        <h3 class="font-display text-3xl font-bold text-gray-900 mt-2">Starter</h3>
+                        <div class="font-display text-5xl font-bold text-gold mt-4">$150</div>
+                        <p class="text-gray-500 text-sm">Up to 10 guests</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            5 artisan cheeses
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            3 premium cured meats
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Fresh seasonal fruits
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Gourmet crackers & breads
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Honey, jams & accompaniments
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Delivery within LA
+                        </li>
+                    </ul>
+                    <a href="#order" class="block w-full bg-gray-100 text-gray-800 text-center py-4 rounded-full hover:bg-gold hover:text-black transition-all duration-300 font-medium">
+                        Select Package
+                    </a>
+                </div>
+                
+                <!-- Premium Package -->
+                <div class="pricing-card bg-dark rounded-3xl p-8 shadow-2xl reveal transform scale-105">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gold text-black text-xs px-3 py-1 rounded-full uppercase tracking-wider font-medium">Most Popular</span>
+                    </div>
+                    <div class="text-center mb-6">
+                        <span class="text-gold text-sm uppercase tracking-widest">Ideal for Parties & Events</span>
+                        <h3 class="font-display text-3xl font-bold text-white mt-2">Premium</h3>
+                        <div class="font-display text-5xl font-bold text-gold mt-4">$350</div>
+                        <p class="text-gray-400 text-sm">Up to 25 guests</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            10 artisan cheeses
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            6 premium cured meats
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Fresh & dried fruits
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Artisan crackers & breads
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Gourmet dips & spreads
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Premium olives & nuts
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Grazing cones (12 pcs)
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Setup & styling included
+                        </li>
+                    </ul>
+                    <a href="#order" class="block w-full bg-gold text-black text-center py-4 rounded-full hover:bg-white transition-all duration-300 font-medium glow-button">
+                        Select Package
+                    </a>
+                </div>
+                
+                <!-- Luxury Package -->
+                <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl reveal">
+                    <div class="text-center mb-6">
+                        <span class="text-gold text-sm uppercase tracking-widest">The Ultimate Experience</span>
+                        <h3 class="font-display text-3xl font-bold text-gray-900 mt-2">Luxury</h3>
+                        <div class="font-display text-5xl font-bold text-gold mt-4">$750</div>
+                        <p class="text-gray-500 text-sm">Up to 50 guests</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            15+ artisan cheeses
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            10 premium cured meats
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Exotic fruits & edible flowers
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Fresh baked breads & crackers
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Premium charcuterie cones (24)
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Champagne & wine pairing suggestions
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Custom branding available
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            On-site setup & styling
+                        </li>
+                    </ul>
+                    <a href="#order" class="block w-full bg-gray-100 text-gray-800 text-center py-4 rounded-full hover:bg-gold hover:text-black transition-all duration-300 font-medium">
+                        Select Package
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Custom Quote -->
+            <div class="mt-16 bg-dark rounded-3xl p-8 md:p-12 text-center reveal">
+                <h3 class="font-display text-3xl font-bold text-white mb-4">Need Something Custom?</h3>
+                <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                    We specialize in creating bespoke grazing experiences tailored to your specific needs. 
+                    Contact us for custom quotes on corporate events, weddings, and large gatherings.
+                </p>
+                <a href="#contact" class="inline-flex items-center border border-gold text-gold px-8 py-3 rounded-full hover:bg-gold hover:text-black transition-all duration-300 font-medium">
+                    <i class="fas fa-comment-dots mr-2"></i> Get Custom Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 right-1/4 w-80 h-80 bg-gold/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold text-sm uppercase tracking-[0.2em]">Common Questions</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mt-4">
+                    Frequently Asked <span class="text-gradient">Questions</span>
+                </h2>
+                <div class="accent-line mx-auto mt-6"></div>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white/5 rounded-2xl p-6 cursor-pointer reveal active" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg text-white font-medium">How far in advance should I place my order?</h4>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-400 mt-4 leading-relaxed">
+                            We recommend placing your order at least 7 days in advance for standard packages 
+                            and 14 days for luxury or custom orders. However, we do accept rush orders when 
+                            availability allows. Contact us directly for last-minute requests.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white/5 rounded-2xl p-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg text-white font-medium">What areas do you serve?</h4>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-400 mt-4 leading-relaxed">
+                            We proudly serve Los Angeles, Inland Empire, and Orange County.
+                            Delivery fees may apply depending on your location.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white/5 rounded-2xl p-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg text-white font-medium">Can you accommodate dietary restrictions?</h4>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-400 mt-4 leading-relaxed">
+                            Absolutely! We offer vegetarian, vegan, gluten-free, and dairy-free options. 
+                            Please inform us of any allergies or dietary restrictions when placing your order 
+                            so we can create a customized selection that everyone can enjoy.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white/5 rounded-2xl p-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg text-white font-medium">Do you provide setup service?</h4>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-400 mt-4 leading-relaxed">
+                            Yes! Setup and styling is included with our Premium and Luxury packages. 
+                            For Starter packages, setup can be added for an additional fee. Our team will 
+                            arrive early to arrange everything beautifully before your guests arrive.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white/5 rounded-2xl p-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg text-white font-medium">What is your cancellation policy?</h4>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-400 mt-4 leading-relaxed">
+                            Full refunds are available for cancellations made 7+ days before your event. 
+                            Cancellations made 3-7 days in advance receive a 50% refund. Cancellations 
+                            within 48 hours are non-refundable but can be rescheduled for a future date.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white/5 rounded-2xl p-6 cursor-pointer reveal" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-display text-lg text-white font-medium">How long do the grazing tables last at an event?</h4>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-400 mt-4 leading-relaxed">
+                            Our items are fresh and best enjoyed within 4-6 hours of setup. For all-day events, 
+                            we recommend choosing items that hold up well at room temperature or scheduling 
+                            a refresh visit. We'll advise on the best options for your event duration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <span class="text-gold text-sm uppercase tracking-[0.2em]">Get In Touch</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">
+                        Let's Create Something <span class="text-gradient">Beautiful</span>
+                    </h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Ready to elevate your event with our artisanal grazing experiences? 
+                        We'd love to hear from you! Reach out to discuss your vision, ask questions, 
+                        or place your order.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-gray-900">Location</h4>
+                                <p class="text-gray-600">Los Angeles, Inland Empire<br>& Orange County</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone-alt text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-gray-900">Phone</h4>
+                                <p class="text-gray-600">(760) 718-9157</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-gray-900">Email</h4>
+                                <p class="text-gray-600">hello@gorjessgrazing.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-instagram text-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-display text-lg font-medium text-gray-900">Instagram</h4>
+                                <a href="https://www.instagram.com/gor_jessgrazing/" class="text-gray-600 hover:text-gold">@gor_jessgrazing</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-gold hover:text-black transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/gor_jessgrazing/" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-gold hover:text-black transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-gold hover:text-black transition-all duration-300">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <form id="contactForm" class="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
+                        <h3 class="font-display text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-600 text-sm mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-gold transition-all duration-300" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-gray-600 text-sm mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-600 text-sm mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300" placeholder="john@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-600 text-sm mb-2">Phone</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300" placeholder="(760) 718-9157">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-600 text-sm mb-2">Event Type</label>
+                            <select class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300">
+                                <option>Select event type...</option>
+                                <option>Wedding</option>
+                                <option>Corporate Event</option>
+                                <option>Birthday Party</option>
+                                <option>Baby Shower</option>
+                                <option>Holiday Party</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-600 text-sm mb-2">Event Date</label>
+                                <input type="date" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="block text-gray-600 text-sm mb-2">Number of Guests</label>
+                                <select class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300">
+                                    <option>Select...</option>
+                                    <option>1-10 guests</option>
+                                    <option>11-25 guests</option>
+                                    <option>26-50 guests</option>
+                                    <option>50+ guests</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-600 text-sm mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none input-glow transition-all duration-300 resize-none" placeholder="Tell us about your event and any special requests..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gold text-black py-4 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300 font-medium text-sm uppercase tracking-widest glow-button">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Now CTA Section -->
+    <section id="order" class="py-24 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0Q0QUYzNyIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="reveal">
+                <span class="text-gold text-sm uppercase tracking-[0.2em]">Ready to Order?</span>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white mt-4 mb-6">
+                    Let Us Create Your Perfect <span class="text-gradient">Grazing Experience</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+                    Whether it's an intimate gathering or a grand celebration, we'll craft a stunning 
+                    grazing spread that your guests will remember forever.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="tel:7607189157" class="bg-gold text-black px-10 py-4 rounded-full hover:bg-white transition-all duration-300 glow-button font-medium text-sm uppercase tracking-widest">
+                        <i class="fas fa-phone mr-2"></i>Call Now
+                    </a>
+                    <a href="#contact" class="border border-white text-white px-10 py-4 rounded-full hover:bg-white hover:text-black transition-all duration-300 font-medium text-sm uppercase tracking-widest">
+                        Request Quote
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex flex-wrap justify-center gap-8 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-gold mr-2"></i>
+                        <span class="text-sm">Free Delivery (LA)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-gold mr-2"></i>
+                        <span class="text-sm">100% Fresh</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-gold mr-2"></i>
+                        <span class="text-sm">5-Star Rated</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-gold mr-2"></i>
+                        <span class="text-sm">Custom Designs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16" style="background-color: #140d09;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center mb-6">
+                        <img src="images/logo-black.png" alt="Gor-Jess Grazing Logo" class="h-24 w-auto">
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-md leading-relaxed">
+                        Creating exquisite grazing experiences across Southern California. From intimate gatherings
+                        to grand celebrations, we craft beautiful charcuterie displays that delight both
+                        the eyes and palate.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-black transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/gor_jessgrazing/" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-black transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gold hover:text-black transition-all duration-300">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-display text-lg font-medium text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-gold transition-colors duration-300">About Us</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-gold transition-colors duration-300">Gallery</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-gold transition-colors duration-300">Pricing</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-gold transition-colors duration-300">FAQ</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-gold transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-display text-lg font-medium text-white mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition-colors duration-300">Wedding Catering</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition-colors duration-300">Corporate Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition-colors duration-300">Private Parties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition-colors duration-300">Holiday Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition-colors duration-300">Custom Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                        © 2026 Gor-Jess Grazing. All rights reserved.
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm text-gray-500">
+                        <a href="#" class="hover:text-gold transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-gold transition-colors duration-300">Terms of Service</a>
+                        <a href="#" class="hover:text-gold transition-colors duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button (Mobile) -->
+    <a href="#order" class="fixed bottom-6 right-6 lg:hidden bg-gold text-black px-6 py-3 rounded-full shadow-2xl z-40 font-medium text-sm">
+        <i class="fas fa-shopping-bag mr-2"></i>Order Now
+    </a>
+
+    <script>
+        // Gallery images data
+        const galleryImages = [
+            { src: 'images/board.png', caption: 'Artisan Board' },
+            { src: 'images/wedding-elegance.png', caption: 'Wedding Elegance' },
+            { src: 'images/cones.png', caption: 'Grazing Cones' },
+            { src: 'images/board2.jpeg', caption: 'Classic Board' },
+            { src: 'images/sweet.png', caption: 'Sweet Treats' },
+            { src: 'images/corporate.png', caption: 'Corporate Events' },
+            { src: 'images/board3.jpeg', caption: 'Grand Spread' },
+            { src: 'images/board4.png', caption: 'Premium Selection' }
+        ];
+        
+        let currentImageIndex = 0;
+        
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-xl');
+            } else {
+                navbar.classList.remove('shadow-xl');
+            }
+        });
+        
+        // Scroll reveal animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+
+        // Counter animation
+        let counterAnimated = false;
+
+        function animateCounters() {
+            if (counterAnimated) return;
+
+            const statsSection = document.getElementById('statsSection');
+            if (!statsSection) return;
+
+            const sectionTop = statsSection.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (sectionTop < windowHeight - 100) {
+                counterAnimated = true;
+                const counters = document.querySelectorAll('.counter');
+
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                });
+            }
+        }
+
+        window.addEventListener('scroll', animateCounters);
+        animateCounters(); // Initial check
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const wasActive = element.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+            });
+            
+            // Open clicked FAQ if it wasn't active
+            if (!wasActive) {
+                element.classList.add('active');
+                element.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // Gallery modal
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('galleryModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            
+            modalImage.src = galleryImages[index].src;
+            modalCaption.textContent = galleryImages[index].caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            modalImage.src = galleryImages[currentImageIndex].src;
+            modalCaption.textContent = galleryImages[currentImageIndex].caption;
+        }
+        
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            modalImage.src = galleryImages[currentImageIndex].src;
+            modalCaption.textContent = galleryImages[currentImageIndex].caption;
+        }
+        
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('galleryModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            }
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            e.target.reset();
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
